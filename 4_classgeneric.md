@@ -22,6 +22,71 @@ class Men {
 
 ```
 
+#### 클래스상속
+
+클래스의 가장 큰 목적은 확장성이라 볼 수 있다.
+
+```javascript
+class AnimalCrossingResident{
+
+  move(){
+    console.log('waking...');
+  }
+}
+
+class Tango extends AnimalCrossingResident{
+  
+  talk(){
+    console.log('talking...');
+  }
+}
+
+const tango:Tango = new Tango();
+tango.move();
+```
+
+이건 기본이고 다음 코드를 보자
+
+```javascript
+class AnimalCrossingResident{
+
+  private readonly name:string;
+  constructor(name:string){
+    this.name = name;
+  }
+
+  move(){
+    console.log('parent is waking...');
+  }
+}
+
+class Tango extends AnimalCrossingResident{
+  
+  constructor(name:string){
+    super(name);           // <---------------------- 부모클래스 생성자
+  }
+
+  move(){
+    console.log('child is waking...');
+    super.move();
+  }
+}
+
+const tango : AnimalCrossingResident = new Tango('tango');
+tango.move();
+```
+
+</br>
+파생된 클래스에서 생성자 함수는 부모 클래스의 생성자를 먼저 생성해야 한다. 그러므로 </br>
+**super()** 를 호출하여 부모클래스의 생성자를 먼저 호출해주자.  또한 move()오버라이드 메소드를 보자 </br>
+</br>
+
+> const tango : AnimalCrossingResident = new Tango('tango');
+  tango.move();
+  
+탱코 클래스를 부모클래스로 타입을 선언하였지만 오버라이드에 의해 부모클래스의 move()가 아닌 </br>
+자기 자신의 move()를 호출한다. </br>
+
 
 #### 제너릭 
 
@@ -39,7 +104,6 @@ function logtext<T>(text: T): T {
 logtext(10);
 logtext<string>('hi');        // 이렇게 함수 옆에 제너릭을 붙여줘서 작성.
 logtext(true);
-
 ```
 
 
