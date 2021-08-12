@@ -25,6 +25,25 @@ getIce({
 });
 ```
 
+#### 선택적 프로퍼티
+
+인터페이스의 모든 프로퍼티가 필요한 것은 아니다. 특정 조건에서만 존재하거나 아예 없을 수도 있다. </br>
+선택적 프로퍼티들을 사용하여 원하는 프로퍼티만 사용할 수 있다 </br>
+
+```javascript
+interface Person{
+  age? :number;       // ?를 붙여준다.
+  name : string;
+}
+
+class King implements Person{
+  name:string;
+  constructor(){}
+}
+```
+
+킹클래스는 퍼슨 인터페이스를 예약어로 사용하지만 age 프로퍼티는 반드시 구현안해도 된다.
+
 #### 함수의 스펙(구조)
 
 ```javascript 
